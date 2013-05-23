@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>JetBox</id>
+    <version>0.1.1-EAP</version>
+    <title>JetBox</title>
+    <authors>Slava Trenogin</authors>
+    <owners>derigel</owners>
+    <projectUrl>https://github.com/JetBrains/JetBox</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ReSharper settings synchronization through Dropbox</description>
+    <copyright>Copyright © Slava Trenogin, 2013</copyright>
+    <dependencies>
+      <dependency id="ReSharper" version="8.0" />
+    </dependencies>
+    <tags>Settings Synchronization Dropbox</tags>
+  </metadata>
+  <files>
+    <file src="bin\$Configuration$\**\*.*" target="ReSharper\v8.0\" />
+  </files>
+</package>
