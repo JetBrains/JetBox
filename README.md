@@ -1,4 +1,4 @@
 JetBox
 ======
 
-ReSharper settings synchronization through DropBox
+ReSharper settings synchronization through Dropbox
