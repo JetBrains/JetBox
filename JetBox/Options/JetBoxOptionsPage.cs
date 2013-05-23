@@ -1,4 +1,9 @@
-﻿using JetBrains.DataFlow;
+﻿using System;
+using System.Net;
+using DropNet.Exceptions;
+using DropNet.Models;
+using JetBox.Dropbox;
+using JetBrains.DataFlow;
 using JetBrains.UI.Application;
 using JetBrains.UI.CommonControls;
 using JetBrains.UI.Options;
@@ -14,15 +19,49 @@ namespace JetBox.Options
   {
     public const string PID = "JetBox";
 
-    public JetBoxOptionsPage(Lifetime lifetime, IUIApplication environment, JetPopupMenus jetPopupMenus)
+    private readonly Client myClient;
+    private readonly OpensUri myOpensUri;
+    private readonly ILogger myLogger;
+
+    public JetBoxOptionsPage(Lifetime lifetime, IUIApplication environment, JetPopupMenus jetPopupMenus, OpensUri opensUri, ILogger logger)
       : base(lifetime, environment, PID)
     {
+      myClient = new Client();
+      myOpensUri = opensUri;
+      myLogger = logger;
       Controls.Add(new LinkLabel("Login", Login, jetPopupMenus));
+      Controls.Add(new LinkLabel("Get info", GetInfo, jetPopupMenus));
     }
 
     private void Login()
     {
-      MessageBox.ShowInfo("Soon");
+      myClient.GetTokenAsync(
+        login => myOpensUri.OpenUri(new Uri(myClient.BuildAuthorizeUrl())),
+        LogException);
+    }
+
+    private void GetInfo()
+    {
+      myClient.GetAccessTokenAsync(
+        login =>
+        {
+          var info = myClient.AccountInfo();
+          MessageBox.ShowInfo("User: " + info.display_name);
+        },
+        LogException);
+    }
+
+    private void LogException(DropboxException exception)
+    {
+      switch (exception.StatusCode)
+      {
+        case HttpStatusCode.Unauthorized:
+          break;
+
+        default:
+          myLogger.LogForeignException(exception);
+          break;
+      }
     }
   }
 }
