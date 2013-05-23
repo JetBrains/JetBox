@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Net;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using DropNet.Exceptions;
-using DropNet.Models;
 using JetBox.Dropbox;
 using JetBrains.Application.Settings;
 using JetBrains.DataFlow;
@@ -15,7 +11,6 @@ using JetBrains.UI.Options.Helpers;
 using JetBrains.UI.Options.OptionPages;
 using JetBrains.UI.PopupMenu;
 using JetBrains.UI.RichText;
-using JetBrains.Util;
 using LinkLabel = JetBrains.UI.CommonControls.LinkLabel;
 
 namespace JetBox.Options
@@ -28,18 +23,16 @@ namespace JetBox.Options
     private readonly Client myClient;
     private readonly IContextBoundSettingsStoreLive mySettingsStore;
     private readonly OpensUri myOpensUri;
-    private readonly ILogger myLogger;
     
     private readonly RichTextLabel myLoginLabel;
     private readonly FlowLayoutPanel myLoggedPanel;
     private readonly FlowLayoutPanel myNonLoggedPanel;
 
-    public JetBoxOptionsPage(Lifetime lifetime, IUIApplication environment, JetBoxSettingsStorage jetBoxSettings, JetPopupMenus jetPopupMenus, OpensUri opensUri, ILogger logger)
+    public JetBoxOptionsPage(Lifetime lifetime, IUIApplication environment, JetBoxSettingsStorage jetBoxSettings, JetPopupMenus jetPopupMenus, OpensUri opensUri)
       : base(lifetime, environment, PID)
     {
       mySettingsStore = jetBoxSettings.SettingsStore.BindToContextLive(lifetime, ContextRange.ApplicationWide);
       myOpensUri = opensUri;
-      myLogger = logger;
 
       myClient = new Client { UserLogin = mySettingsStore.GetValue(JetBoxSettingsAccessor.Login) };
 
@@ -63,6 +56,7 @@ namespace JetBox.Options
       if (Control.Control.InvokeRequired)
       {
         Control.Control.Invoke((Action<bool>)InitLoginState, logged);
+        return;
       }
 
       if (logged)
@@ -97,7 +91,7 @@ namespace JetBox.Options
       exception =>
       {
         InitLoginState(false);
-        LogException(exception);
+        myClient.LogException(exception);
       });
     }
 
@@ -105,7 +99,7 @@ namespace JetBox.Options
     {
       myClient.GetTokenAsync(
         login => myOpensUri.OpenUri(new Uri(myClient.BuildAuthorizeUrl())),
-        LogException);
+        myClient.LogException);
     }
 
     private void Logout()
@@ -128,20 +122,7 @@ namespace JetBox.Options
           mySettingsStore.SetValue(JetBoxSettingsAccessor.Login, login);
           InitLoginState();
         },
-        LogException);
-    }
-
-    private void LogException(DropboxException exception)
-    {
-      switch (exception.StatusCode)
-      {
-        case HttpStatusCode.Unauthorized:
-          break;
-
-        default:
-          myLogger.LogForeignException(exception);
-          break;
-      }
+        myClient.LogException);
     }
   }
 }

@@ -64,6 +64,7 @@
     <Compile Include="resources\ThemedIcons.Unnamed.Generated.cs">
       <DependentUpon>dropbox.png</DependentUpon>
     </Compile>
+    <Compile Include="Sync\ProductSettingsTracker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ThemedIconPng Include="resources\dropbox.png" />
