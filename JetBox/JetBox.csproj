@@ -35,12 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DropNet">
-      <HintPath>packages\DropNet.1.9.4\lib\net35\DropNet.dll</HintPath>
+      <HintPath>packages\DropNet.1.9.4.1\lib\net35\DropNet.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="RestSharp">
       <HintPath>packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -70,8 +69,8 @@
     <ThemedIconPng Include="resources\dropbox.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="JetBox.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <ReSharperSdkTargets Condition=" '$(ReSharperSdkTargets)' == '' ">$(MSBuildExtensionsPath)\JetBrains\ReSharper.SDK\v8.0</ReSharperSdkTargets>
