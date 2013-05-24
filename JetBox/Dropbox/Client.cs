@@ -1,20 +1,17 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
 using DropNet;
 using DropNet.Exceptions;
 using JetBrains.Util;
-using JetBrains.Util.Logging;
 
 namespace JetBox.Dropbox
 {
-  // TODO: parameter are hardcoded
   public class Client : DropNetClient
   {
-    public static string RootName = "JetBox";
-    
-    public Client() : base("4yt9baw2q6mzdaq", "e16o5uqliplbkvt")
+    private readonly ILogger myLogger;
+
+    public Client(ILogger logger, string apiKey, string appSecret) : base(apiKey, appSecret)
     {
-      UseSandbox = true;
+      myLogger = logger;
     }
 
     public void LogException(DropboxException exception)
@@ -25,7 +22,7 @@ namespace JetBox.Dropbox
           break;
 
         default:
-          Logger.LogExceptionSilently(exception);
+          myLogger.LogExceptionSilently(exception);
           break;
       }
     }

@@ -28,13 +28,14 @@ namespace JetBox.Options
     private readonly FlowLayoutPanel myLoggedPanel;
     private readonly FlowLayoutPanel myNonLoggedPanel;
 
-    public JetBoxOptionsPage(Lifetime lifetime, IUIApplication environment, JetBoxSettingsStorage jetBoxSettings, JetPopupMenus jetPopupMenus, OpensUri opensUri)
+    public JetBoxOptionsPage(Lifetime lifetime, IUIApplication environment, ClientFactory clientFactory, JetBoxSettingsStorage jetBoxSettings, JetPopupMenus jetPopupMenus, OpensUri opensUri)
       : base(lifetime, environment, PID)
     {
       mySettingsStore = jetBoxSettings.SettingsStore.BindToContextLive(lifetime, ContextRange.ApplicationWide);
       myOpensUri = opensUri;
 
-      myClient = new Client { UserLogin = mySettingsStore.GetValue(JetBoxSettingsAccessor.Login) };
+      myClient = clientFactory.CreateClient();
+      myClient.UserLogin = mySettingsStore.GetValue(JetBoxSettingsAccessor.Login);
 
       // init UI
       myLoggedPanel = new FlowLayoutPanel { Visible = false, AutoSize = true };

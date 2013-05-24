@@ -43,6 +43,7 @@
       <HintPath>packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -56,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dropbox\Client.cs" />
+    <Compile Include="Dropbox\ClientFactory.cs" />
     <Compile Include="Options\JetBoxOptionsPage.cs" />
     <Compile Include="Options\JetBoxSettings.cs" />
     <Compile Include="Options\JetBoxSettingsStorage.cs" />
@@ -70,6 +72,9 @@
     <ThemedIconPng Include="resources\dropbox.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="JetBox.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

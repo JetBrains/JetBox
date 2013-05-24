@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Net;
-using DropNet.Exceptions;
 using JetBox.Dropbox;
 using JetBox.Options;
 using JetBrains.Application;
@@ -16,12 +15,14 @@ namespace JetBox.Sync
   [ShellComponent]
   public class ProductSettingsTracker
   {
+    private readonly ClientFactory myClientFactory;
     private readonly FileSystemPath myRootFolder;
     private readonly IContextBoundSettingsStoreLive mySettingsStore;
     private Client myClient;
 
-    public ProductSettingsTracker(Lifetime lifetime, IProductNameAndVersion product, GlobalPerProductStorage globalPerProductStorage, IFileSystemTracker fileSystemTracker, JetBoxSettingsStorage jetBoxSettings)
+    public ProductSettingsTracker(Lifetime lifetime, IProductNameAndVersion product, ClientFactory clientFactory, GlobalPerProductStorage globalPerProductStorage, IFileSystemTracker fileSystemTracker, JetBoxSettingsStorage jetBoxSettings)
     {
+      myClientFactory = clientFactory;
       mySettingsStore = jetBoxSettings.SettingsStore.BindToContextLive(lifetime, ContextRange.ApplicationWide);
       mySettingsStore.Changed.Advise(lifetime, _ => InitClient());
 
@@ -105,7 +106,8 @@ namespace JetBox.Sync
 
     private void InitClient()
     {
-      myClient = new Client { UserLogin = mySettingsStore.GetValue(JetBoxSettingsAccessor.Login) };
+      myClient = myClientFactory.CreateClient();
+      myClient.UserLogin = mySettingsStore.GetValue(JetBoxSettingsAccessor.Login);
     }
 
     private void SyncFromCloud(FileSystemPath localPath)
