@@ -26,7 +26,7 @@ namespace JetBox.Sync
       mySettingsStore = jetBoxSettings.SettingsStore.BindToContextLive(lifetime, ContextRange.ApplicationWide);
       mySettingsStore.Changed.Advise(lifetime, _ => InitClient());
 
-      myRootFolder = new FileSystemPath(product.ProductName);
+      myRootFolder = FileSystemPath.Parse(product.ProductName);
       InitClient();
 
       var productSettingsPath = globalPerProductStorage.XmlFileStorage.Path;
