@@ -33,7 +33,7 @@ namespace JetBox.Options
 
     public JetBoxSettingsStorage(Lifetime lifetime, ProductSettingsLocation productSettingsLocation, ISettingsSchema settingsSchema, DataContexts dataContexts, IThreading threading, IFileSystemTracker fileSystemTracker, FileSettingsStorageBehavior settingsStorageBehavior, ISettingsLogger settingsLogger, ISettingsChangeDispatch settingsChangeDispatch, SettingsStorageMountPoints.SelfCheckControl selfCheckControl)
     {
-      var filePath = productSettingsLocation.GetUserSettingsNonRoamingDir(ProductSettingsLocationFlag.ThisProductThisVersionThisEnvironment).Combine("JetBox." + XmlFileSettingsStorage.SettingsStorageFileExtension);
+      var filePath = productSettingsLocation.GetUserSettingsNonRoamingDir(ProductSettingsLocationFlag.ThisProductThisVersionThisEnvironment).Combine("JetBox" + XmlFileSettingsStorage.SettingsStorageFileExtensionWithDot);
       var property = new Property<FileSystemPath>(lifetime, GetType().Name + "Path", filePath);
       var settingsProvider = new JetBoxSettingsProvider(lifetime, GetType().Name + "::Provider", property, true, 0, IsAvailable.Always, SettingsStoreSerializationToXmlDiskFile.SavingEmptyContent.DeleteFile, threading, fileSystemTracker, settingsStorageBehavior, new Dictionary<PropertyId, object>());
       var mounts = new SettingsStorageMountPoints(lifetime,
