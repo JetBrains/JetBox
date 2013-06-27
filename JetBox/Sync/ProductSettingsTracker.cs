@@ -34,13 +34,8 @@ namespace JetBox.Sync
       SyncFromCloud(productSettingsPath.Value);
 
       var fileTrackingLifetime = new SequentialLifetimes(lifetime);
-      productSettingsPath.Change.Advise(lifetime, args => fileTrackingLifetime.Next(lt =>
-      {
-        if (args.HasNew)
-        {
-          fileSystemTracker.AdviseFileChanges(lt, args.New, delta => delta.Accept(new FileChangesVisitor(myClient, myRootFolder)));
-        }
-      }));
+      productSettingsPath.Change.Advise_NoAcknowledgement(lifetime,
+        args => fileTrackingLifetime.Next(lt => fileSystemTracker.AdviseFileChanges(lt, args.New, delta => delta.Accept(new FileChangesVisitor(myClient, myRootFolder)))));
     }
 
     public class FileChangesVisitor : IFileSystemChangeDeltaVisitor
