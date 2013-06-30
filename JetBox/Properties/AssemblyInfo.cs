@@ -13,8 +13,8 @@ using JetBrains.Application.PluginSupport;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("0.1.7")]
-[assembly: AssemblyFileVersion("0.1.7")]
+[assembly: AssemblyVersion("0.1.8")]
+[assembly: AssemblyFileVersion("0.1.8")]
 
 // The following information is displayed by ReSharper in the Plugins dialog
 [assembly: PluginTitle("JetBox")]
