@@ -5,7 +5,6 @@ using JetBox.Options;
 using JetBrains.Application;
 using JetBrains.Application.FileSystemTracker;
 using JetBrains.Application.Settings;
-using JetBrains.Application.Settings.Storage.DefaultFileStorages;
 using JetBrains.DataFlow;
 using JetBrains.ProjectModel;
 using JetBrains.Util;
@@ -20,7 +19,7 @@ namespace JetBox.Sync
     private readonly IContextBoundSettingsStoreLive mySettingsStore;
     private Client myClient;
 
-    public ProductSettingsTracker(Lifetime lifetime, IProductNameAndVersion product, ClientFactory clientFactory, GlobalPerProductStorage globalPerProductStorage, IFileSystemTracker fileSystemTracker, JetBoxSettingsStorage jetBoxSettings)
+    public ProductSettingsTracker(Lifetime lifetime, IProductNameAndVersion product, ClientFactory clientFactory, IViewable<ISyncSource> syncSources, IFileSystemTracker fileSystemTracker, JetBoxSettingsStorage jetBoxSettings)
     {
       myClientFactory = clientFactory;
       mySettingsStore = jetBoxSettings.SettingsStore.BindToContextLive(lifetime, ContextRange.ApplicationWide);
@@ -29,27 +28,31 @@ namespace JetBox.Sync
       myRootFolder = FileSystemPath.Parse(product.ProductName);
       InitClient();
 
-      var productSettingsPath = globalPerProductStorage.XmlFileStorage.Path;
-
-      SyncFromCloud(productSettingsPath.Value);
-
-      var fileTrackingLifetime = new SequentialLifetimes(lifetime);
-      productSettingsPath.Change.Advise(lifetime,
-        args =>
+      syncSources.View(lifetime, (lt1, source) =>
+        source.FilesToSync.View(lt1, (lt2, fileToSync) =>
         {
-          var path = args.Property.Value;
-          if (lifetime.IsTerminated || path.IsNullOrEmpty())
-          {
-            fileTrackingLifetime.TerminateCurrent();
-          }
-          else
-          {
-            fileTrackingLifetime.Next(lt => fileSystemTracker.AdviseFileChanges(lt, path, delta => delta.Accept(new FileChangesVisitor(myClient, myRootFolder))));
-          }
-        });
+          SyncFromCloud(fileToSync.Value);
+
+          var fileTrackingLifetime = new SequentialLifetimes(lt2);
+          fileToSync.Change.Advise(lt2,
+            args =>
+            {
+              var path = args.Property.Value;
+              if (lifetime.IsTerminated || path.IsNullOrEmpty())
+              {
+                fileTrackingLifetime.TerminateCurrent();
+              }
+              else
+              {
+                fileTrackingLifetime.Next(lt =>
+                    fileSystemTracker.AdviseFileChanges(lt, path,
+                      delta => delta.Accept(new FileChangesVisitor(myClient, myRootFolder))));
+              }
+            });
+        }));
     }
 
-    public class FileChangesVisitor : IFileSystemChangeDeltaVisitor
+    private class FileChangesVisitor : IFileSystemChangeDeltaVisitor
     {
       private readonly Client myClient;
       private readonly FileSystemPath myRootFolder;

@@ -68,6 +68,9 @@
     <Compile Include="resources\ThemedIcons.Unnamed.Generated.cs">
       <DependentUpon>dropbox.png</DependentUpon>
     </Compile>
+    <Compile Include="Sync\ExtensionsSyncSource.cs" />
+    <Compile Include="Sync\GlobalProductSyncSource.cs" />
+    <Compile Include="Sync\ISyncSource.cs" />
     <Compile Include="Sync\ProductSettingsTracker.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,7 +80,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="JetBox.nuspec" />
+    <None Include="JetBox.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

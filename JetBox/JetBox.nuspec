@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>JetBox</id>
-    <version>0.1.9</version>
+    <version>0.2</version>
     <title>JetBox</title>
     <authors>Slava Trenogin</authors>
     <owners>derigel</owners>
@@ -11,6 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ReSharper settings synchronization through Dropbox</description>
     <copyright>Copyright © Slava Trenogin, 2013</copyright>
+    <releaseNotes>Sync extensions too!</releaseNotes>
     <dependencies>
       <dependency id="ReSharper" version="8.0" />
     </dependencies>
