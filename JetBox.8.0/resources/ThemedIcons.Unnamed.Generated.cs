@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Windows.Markup.XmlnsDefinitionAttribute("urn:shemas-jetbrains-com:ui-application-icons-unnamed", "JetBox")]
-[assembly: global::JetBrains.UI.Icons.CompiledIcons.CompiledIconsPackAttribute(IconPackResourceIdentification="JetBox;component/resources/ThemedIcons.Unnamed.Generated.Xaml", IconNames=new string[] {
+[assembly: global::JetBrains.UI.Icons.CompiledIcons.CompiledIconsPackAttribute(IconPackResourceIdentification="JetBox.8.0;component/resources/ThemedIcons.Unnamed.Generated.Xaml", IconNames=new string[] {
 		"Dropbox"})]
 
 namespace JetBox
@@ -76,7 +76,7 @@ namespace JetBox
 		///<example>
 		///  <code>themediconmanager.GetIcon&lt;UnnamedThemedIcons.Dropbox&gt;()        // Icon image for rendering</code>
 		///</example>
-		[global::JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute("JetBox;component/resources/ThemedIcons.Unnamed.Generated.Xaml", 0, "Dropbox")]
+		[global::JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute("JetBox.8.0;component/resources/ThemedIcons.Unnamed.Generated.Xaml", 0, "Dropbox")]
 		public sealed class Dropbox : global::JetBrains.UI.Icons.CompiledIcons.CompiledIconClass
 		{
 			
@@ -102,7 +102,7 @@ namespace JetBox
 			///<example>
 			///  <code>themediconmanager.GetIcon&lt;UnnamedThemedIcons.Dropbox&gt;()        // Icon image for rendering</code>
 			///</example>
-			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.UI.Icons.CompiledIcons.CompiledIconId("JetBox;component/resources/ThemedIcons.Unnamed.Generated.Xaml", 0, "Dropbox");
+			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.UI.Icons.CompiledIcons.CompiledIconId("JetBox.8.0;component/resources/ThemedIcons.Unnamed.Generated.Xaml", 0, "Dropbox");
 		}
 	}
 }
