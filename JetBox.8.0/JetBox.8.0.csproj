@@ -70,6 +70,15 @@
     <Compile Include="..\JetBox\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\JetBox\Sync\ExtensionsSyncSource.cs">
+      <Link>Sync\ExtensionsSyncSource.cs</Link>
+    </Compile>
+    <Compile Include="..\JetBox\Sync\GlobalProductSyncSource.cs">
+      <Link>Sync\GlobalProductSyncSource.cs</Link>
+    </Compile>
+    <Compile Include="..\JetBox\Sync\ISyncSource.cs">
+      <Link>Sync\ISyncSource.cs</Link>
+    </Compile>
     <Compile Include="..\JetBox\Sync\ProductSettingsTracker.cs">
       <Link>Sync\ProductSettingsTracker.cs</Link>
     </Compile>
