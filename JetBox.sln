@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetBox", "JetBox\JetBox.csproj", "{D19C5C55-489B-4241-AA82-DACD01545602}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{9398E733-A0C4-41A4-B477-4077E0D85F4F}"
@@ -10,7 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{9398E733
 		JetBox.nuspec = JetBox.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetBox.8.0", "JetBox.8.0\JetBox.8.0.csproj", "{143107F3-FC9A-4FFA-BD43-E7F54DDFF3BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetBox.8.0", "JetBox\JetBox.8.0.csproj", "{143107F3-FC9A-4FFA-BD43-E7F54DDFF3BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JetBox.8.1", "JetBox\JetBox.8.1.csproj", "{BFCDC43F-BFCE-4EDE-B77D-F9951A47D834}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,10 @@ Global
 		{143107F3-FC9A-4FFA-BD43-E7F54DDFF3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{143107F3-FC9A-4FFA-BD43-E7F54DDFF3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{143107F3-FC9A-4FFA-BD43-E7F54DDFF3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCDC43F-BFCE-4EDE-B77D-F9951A47D834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCDC43F-BFCE-4EDE-B77D-F9951A47D834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCDC43F-BFCE-4EDE-B77D-F9951A47D834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCDC43F-BFCE-4EDE-B77D-F9951A47D834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

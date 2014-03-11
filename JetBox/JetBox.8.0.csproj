@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.0.1086\build\JetBrains.ReSharper.SDK.Props" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.0.1086\build\JetBrains.ReSharper.SDK.Props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -17,88 +17,67 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>bin\Debug\JetBox.8.0\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;JET_MODE_ASSERT,RS_80</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>bin\Release\JetBox.8.0\</OutputPath>
+    <DefineConstants>TRACE;RS_80</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DropNet">
+    <Reference Include="DropNet, Version=1.8.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DropNet.1.9.6\lib\net40\DropNet.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+      <HintPath>packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\JetBox\Dropbox\Client.cs">
-      <Link>Dropbox\Client.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Dropbox\ClientFactory.cs">
-      <Link>Dropbox\ClientFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Options\JetBoxOptionsPage.cs">
-      <Link>Options\JetBoxOptionsPage.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Options\JetBoxSettings.cs">
-      <Link>Options\JetBoxSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Options\SneakyHackToGetSettingsSerialisedCorrectly.cs">
-      <Link>Options\SneakyHackToGetSettingsSerialisedCorrectly.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Properties\AssemblyInfo.cs">
-      <Link>Properties\AssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Sync\ExtensionsSyncSource.cs">
-      <Link>Sync\ExtensionsSyncSource.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Sync\GlobalProductSyncSource.cs">
-      <Link>Sync\GlobalProductSyncSource.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Sync\ISyncSource.cs">
-      <Link>Sync\ISyncSource.cs</Link>
-    </Compile>
-    <Compile Include="..\JetBox\Sync\ProductSettingsTracker.cs">
-      <Link>Sync\ProductSettingsTracker.cs</Link>
-    </Compile>
+    <Compile Include="Dropbox\Client.cs" />
+    <Compile Include="Dropbox\ClientFactory.cs" />
+    <Compile Include="Options\JetBoxOptionsPage.cs" />
+    <Compile Include="Options\JetBoxSettings.cs" />
     <Compile Include="Options\JetBoxSettingsStorage.cs" />
+    <Compile Include="Options\SneakyHackToGetSettingsSerialisedCorrectly.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resources\ThemedIcons.Unnamed.Generated.cs">
       <DependentUpon>dropbox.png</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\JetBox\App.config">
-      <Link>App.config</Link>
-    </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Compile Include="Sync\ExtensionsSyncSource.cs" />
+    <Compile Include="Sync\GlobalProductSyncSource.cs" />
+    <Compile Include="Sync\ISyncSource.cs" />
+    <Compile Include="Sync\ProductSettingsTracker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ThemedIconPng Include="resources\dropbox.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.JetBox.8.0.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\JetBrains.ReSharper.SDK.8.0.1086\build\JetBrains.ReSharper.SDK.Targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.0.1086\build\JetBrains.ReSharper.SDK.Targets')" />
-  <Import Project="$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Platform.ThemedIconsConverter.Targets" />
+  <Import Project="$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Platform.ThemedIconsConverter.Targets" Condition="Exists('$(ReSharperSdkTools)\MSBuild\JetBrains.Build.Platform.ThemedIconsConverter.Targets')" />
 </Project>
