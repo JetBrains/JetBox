@@ -3,10 +3,11 @@ using System.Net;
 using JetBox.Dropbox;
 using JetBox.Options;
 using JetBrains.Application;
+using JetBrains.Application.BuildScript.Application;
+using JetBrains.Application.changes;
 using JetBrains.Application.FileSystemTracker;
 using JetBrains.Application.Settings;
 using JetBrains.DataFlow;
-using JetBrains.ProjectModel;
 using JetBrains.Util;
 
 namespace JetBox.Sync
@@ -19,13 +20,13 @@ namespace JetBox.Sync
     private readonly IContextBoundSettingsStoreLive mySettingsStore;
     private Client myClient;
 
-    public ProductSettingsTracker(Lifetime lifetime, IProductNameAndVersion product, ClientFactory clientFactory, IViewable<ISyncSource> syncSources, IFileSystemTracker fileSystemTracker, JetBoxSettingsStorage jetBoxSettings)
+    public ProductSettingsTracker(Lifetime lifetime, ClientFactory clientFactory, IViewable<ISyncSource> syncSources, IFileSystemTracker fileSystemTracker, JetBoxSettingsStorage jetBoxSettings)
     {
       myClientFactory = clientFactory;
       mySettingsStore = jetBoxSettings.SettingsStore.BindToContextLive(lifetime, ContextRange.ApplicationWide);
       mySettingsStore.Changed.Advise(lifetime, _ => InitClient());
 
-      myRootFolder = FileSystemPath.Parse(product.ProductName);
+      myRootFolder = FileSystemPath.Parse("ReSharperPlatform");
       InitClient();
 
       syncSources.View(lifetime, (lt1, source) =>

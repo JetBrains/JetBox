@@ -1,5 +1,4 @@
 using System.Reflection;
-using JetBrains.Application.PluginSupport;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -13,10 +12,6 @@ using JetBrains.Application.PluginSupport;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("0.2.1")]
-[assembly: AssemblyFileVersion("0.2.1")]
-
-// The following information is displayed by ReSharper in the Plugins dialog
-[assembly: PluginTitle("JetBox")]
-[assembly: PluginDescription("ReSharper settings synchronization through DropBox")]
-[assembly: PluginVendor("Slava Trenogin")]
+[assembly: AssemblyVersion("0.3.2")]
+[assembly: AssemblyFileVersion("0.3.2")]
+[assembly: AssemblyInformationalVersion("0.3.2")]
