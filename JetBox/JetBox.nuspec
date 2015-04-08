@@ -9,11 +9,11 @@
     <projectUrl>https://github.com/JetBrains/JetBox</projectUrl>
     <iconUrl>https://raw.github.com/JetBrains/JetBox/f0da4c070874f3bc206f6bf06ad9bbf687061130/JetBox/resources/dropbox128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>ReSharper settings synchronization through Dropbox</description>
-    <copyright>Copyright © Slava Trenogin, 2014</copyright>
-    <releaseNotes>ReSharper 9.0 compatibility</releaseNotes>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <releaseNotes>ReSharper 9.1 compatibility</releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[1.0,2.0)" />
+      <dependency id="Wave" version="[2.0,3.0)" />
     </dependencies>
     <tags>Settings Synchronization Dropbox</tags>
   </metadata>
