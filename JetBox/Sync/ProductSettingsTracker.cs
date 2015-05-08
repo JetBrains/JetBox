@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Net;
+using DropNet.Exceptions;
 using JetBox.Dropbox;
 using JetBox.Options;
 using JetBrains.Application;
-using JetBrains.Application.BuildScript.Application;
 using JetBrains.Application.changes;
 using JetBrains.Application.FileSystemTracker;
 using JetBrains.Application.Settings;
@@ -133,7 +133,7 @@ namespace JetBox.Sync
         },
         exception =>
         {
-          if (exception.StatusCode == HttpStatusCode.NotFound)
+          if ((exception is DropboxRestException) && (((DropboxRestException) exception).StatusCode == HttpStatusCode.NotFound))
           {
             myClient.UploadFileAsync(myRootFolder.FullPath.Replace('\\', '/'), new FileInfo(localPath.FullPath),
               data => { },

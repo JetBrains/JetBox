@@ -16,15 +16,10 @@ namespace JetBox.Dropbox
 
     public void LogException(DropboxException exception)
     {
-      switch (exception.StatusCode)
-      {
-        case HttpStatusCode.Unauthorized:
-          break;
+      if ((exception is DropboxRestException) && ((DropboxRestException) exception).StatusCode == HttpStatusCode.Unauthorized)
+        return;
 
-        default:
-          myLogger.LogExceptionSilently(exception);
-          break;
-      }
+        myLogger.LogExceptionSilently(exception);
     }
   }
 }
