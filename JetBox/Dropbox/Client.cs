@@ -9,7 +9,7 @@ namespace JetBox.Dropbox
   {
     private readonly ILogger myLogger;
 
-    public Client(ILogger logger, string apiKey, string appSecret) : base(apiKey, appSecret)
+    public Client(ILogger logger, string apiKey, string appSecret, IWebProxy webProxy) : base(apiKey, appSecret, webProxy)
     {
       myLogger = logger;
     }

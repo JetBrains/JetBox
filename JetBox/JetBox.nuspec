@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <releaseNotes>ReSharper 9.1 compatibility</releaseNotes>
+    <releaseNotes>Bugfixes</releaseNotes>
     <dependencies>
       <dependency id="Wave" version="[2.0,3.0)" />
     </dependencies>

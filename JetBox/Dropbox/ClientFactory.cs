@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using JetBrains.Application;
+using JetBrains.Application.Communication;
 using JetBrains.Util;
 
 namespace JetBox.Dropbox
@@ -9,10 +10,12 @@ namespace JetBox.Dropbox
   public class ClientFactory
   {
     private readonly ILogger myLogger;
+    private readonly WebProxySettingsReader myProxySettingsReader;
 
-    public ClientFactory(ILogger logger)
+    public ClientFactory(ILogger logger, WebProxySettingsReader proxySettingsReader)
     {
       myLogger = logger;
+      myProxySettingsReader = proxySettingsReader;
     }
 
     public Client CreateClient()
@@ -23,7 +26,7 @@ namespace JetBox.Dropbox
       var appSecret = config.AppSettings.Settings["Dropbox.AppSecret"].Value;
       var useSandBox = Convert.ToBoolean(config.AppSettings.Settings["Dropbox.UseSandBox"].Value);
       
-      return new Client(myLogger, apiKey, appSecret) { UseSandbox = useSandBox };
+      return new Client(myLogger, apiKey, appSecret, myProxySettingsReader.GetProxySettings()) { UseSandbox = useSandBox };
     }
   }
 }
