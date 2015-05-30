@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>cbf26e6f</NuGetPackageImportStamp>
     <JetReferencesPrivate>True</JetReferencesPrivate>
-    <HostFullIdentifier>ReSharper</HostFullIdentifier>
+    <HostFullIdentifier>ReSharperPlatformVs14Exp</HostFullIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

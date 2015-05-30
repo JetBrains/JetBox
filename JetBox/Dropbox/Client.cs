@@ -7,11 +7,11 @@ namespace JetBox.Dropbox
 {
   public class Client : DropNetClient
   {
-    private readonly ILogger myLogger;
+    public ILogger Logger { get; private set; }
 
     public Client(ILogger logger, string apiKey, string appSecret, IWebProxy webProxy) : base(apiKey, appSecret, webProxy)
     {
-      myLogger = logger;
+      Logger = logger;
     }
 
     public void LogException(DropboxException exception)
@@ -19,7 +19,7 @@ namespace JetBox.Dropbox
       if ((exception is DropboxRestException) && ((DropboxRestException) exception).StatusCode == HttpStatusCode.Unauthorized)
         return;
 
-        myLogger.LogExceptionSilently(exception);
+        Logger.LogExceptionSilently(exception);
     }
   }
 }
