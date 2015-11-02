@@ -11,9 +11,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <releaseNotes>ReSharper 9.2 support</releaseNotes>
+    <releaseNotes>ReSharper 10.0 support</releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[3.0,4.0)" />
+      <dependency id="Wave" version="[4.0,5.0)" />
     </dependencies>
     <tags>Settings Synchronization Dropbox</tags>
   </metadata>
