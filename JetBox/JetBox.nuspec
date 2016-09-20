@@ -11,9 +11,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <releaseNotes>ReSharper 2016.1 support</releaseNotes>
+    <releaseNotes>ReSharper 2016.2 support</releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[5.0,6.0)" />
+      <dependency id="Wave" version="[6.0,7.0)" />
       <dependency id="RestSharp" version="105.0.1" /> <!-- Transitive references should be specified directly -->
     </dependencies>
     <tags>Settings Synchronization Dropbox</tags>
