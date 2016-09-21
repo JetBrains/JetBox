@@ -19,6 +19,6 @@
     <tags>Settings Synchronization Dropbox</tags>
   </metadata>
   <files>
-    <file src="bin\$Configuration$\JetBox\$id$.dll.config" target="dotFiles" />
+    <file src="bin\$Configuration$\JetBox\$id$.dll.config" target="lib\net40" />
   </files>
 </package>
