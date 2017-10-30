@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <releaseNotes>ReSharper 2017.2 support</releaseNotes>
+    <releaseNotes>ReSharper 2017.3 support</releaseNotes>
     <dependencies>
       <dependency id="RestSharp" version="105.0.1" /> <!-- Transitive references should be specified directly -->
     </dependencies>
