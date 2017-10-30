@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using JetBrains.Application;
 using JetBrains.Application.BuildScript;
 using JetBrains.Application.DataContext;
@@ -26,8 +27,8 @@ namespace JetBox.Options
 
     private class JetBoxSettingsProvider : FileSettingsStorageProviderBase
     {
-      public JetBoxSettingsProvider([yWorks.Support.Annotations.NotNull] Lifetime lifetime, [yWorks.Support.Annotations.NotNull] string name, [yWorks.Support.Annotations.NotNull] IProperty<FileSystemPath> path, bool isWritable, double priority, [yWorks.Support.Annotations.NotNull] IIsAvailable isAvailable, SettingsStoreSerializationToXmlDiskFile.SavingEmptyContent whenNoContent, [yWorks.Support.Annotations.NotNull] IThreading threading, [yWorks.Support.Annotations.NotNull] IFileSystemTracker filetracker,
-        [yWorks.Support.Annotations.NotNull] IFileSettingsStorageBehavior behavior, InternKeyPathComponent interned,
+      public JetBoxSettingsProvider([NotNull] Lifetime lifetime, [NotNull] string name, [NotNull] IProperty<FileSystemPath> path, bool isWritable, double priority, [NotNull] IIsAvailable isAvailable, SettingsStoreSerializationToXmlDiskFile.SavingEmptyContent whenNoContent, [NotNull] IThreading threading, [NotNull] IFileSystemTracker filetracker,
+        [NotNull] IFileSettingsStorageBehavior behavior, InternKeyPathComponent interned,
         IEnumerable<KeyValuePair<PropertyId, object>> metadata)
         : base(lifetime, name, path, isWritable, priority, isAvailable, whenNoContent, threading, filetracker, behavior, interned, metadata)
       {}
