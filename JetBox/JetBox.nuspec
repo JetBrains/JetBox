@@ -11,14 +11,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <releaseNotes>ReSharper 2016.2 support</releaseNotes>
+    <releaseNotes>ReSharper 2017.2 support</releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[6.0,7.0)" />
       <dependency id="RestSharp" version="105.0.1" /> <!-- Transitive references should be specified directly -->
     </dependencies>
     <tags>Settings Synchronization Dropbox</tags>
   </metadata>
   <files>
-    <file src="bin\$Configuration$\JetBox\$id$.dll.config" target="lib\net40" />
+    <file src="bin\$Configuration$\JetBox\$id$.dll.config" target="lib\net45" />
   </files>
 </package>

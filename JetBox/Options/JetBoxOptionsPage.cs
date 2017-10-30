@@ -6,16 +6,16 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using JetBox.Dropbox;
 using JetBrains.Application.Settings;
+using JetBrains.Application.UI.Components;
+using JetBrains.Application.UI.Controls.JetPopupMenu;
+using JetBrains.Application.UI.Options;
+using JetBrains.Application.UI.Options.OptionPages;
 using JetBrains.DataFlow;
-using JetBrains.UI.Application;
 using JetBrains.UI.Controls;
-using JetBrains.UI.Options;
 using JetBrains.UI.Options.Helpers;
-using JetBrains.UI.Options.OptionPages;
-using JetBrains.UI.PopupMenu;
 using JetBrains.UI.RichText;
 using JetBrains.Util;
-using LinkLabel = JetBrains.UI.CommonControls.LinkLabel;
+using LinkLabel = JetBrains.UI.Controls.LinkLabel;
 
 namespace JetBox.Options
 {

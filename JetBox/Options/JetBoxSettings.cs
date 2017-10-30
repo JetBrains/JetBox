@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using DropNet.Models;
 using JetBrains.Application.Settings;
+using JetBrains.Application.Settings.WellKnownRootKeys;
 
 namespace JetBox.Options
 {
