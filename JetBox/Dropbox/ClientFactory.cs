@@ -26,7 +26,7 @@ namespace JetBox.Dropbox
       var appSecret = config.AppSettings.Settings["Dropbox.AppSecret"].Value;
       var useSandBox = Convert.ToBoolean(config.AppSettings.Settings["Dropbox.UseSandBox"].Value);
       
-      return new Client(myLogger, apiKey, appSecret, myProxySettingsReader.GetProxySettings()) { UseSandbox = useSandBox };
+      return new Client(myLogger, apiKey, appSecret, myProxySettingsReader.GetWebProxy()) { UseSandbox = useSandBox };
     }
   }
 }

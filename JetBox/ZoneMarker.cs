@@ -3,7 +3,7 @@
 namespace JetBox
 {
   [ZoneMarker]
-  public class ZoneMarker : IRequire<IOuterWorldConnectZone>
+  public class ZoneMarker : IRequire<IOuterWorldConnectEnvZone>
   {
      
   }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using JetBox.Dropbox;
+using JetBrains.Application.Icons;
 using JetBrains.Application.Settings;
 using JetBrains.Application.UI.Components;
 using JetBrains.Application.UI.Controls.JetPopupMenu;
@@ -49,7 +50,7 @@ namespace JetBox.Options
       myNonLoggedPanel = new FlowLayoutPanel { Visible = false, AutoSize = true, FlowDirection = FlowDirection.TopDown };
       myNonLoggedPanel.Controls.Add(new LinkLabel("Login", Login, jetPopupMenus)
       {
-        Image = Environment.Theming.Icons[UnnamedThemedIcons.Dropbox.Id].CurrentGdipBitmapScreenDpi,
+        Image = Environment.Theming.Icons[UnnamedThemedIcons.Dropbox.Id].CurrentGdipBitmapNotSure(),
         ImageAlign = ContentAlignment.MiddleLeft,
         Padding = new Padding(20, 0, 0, 0)
       });

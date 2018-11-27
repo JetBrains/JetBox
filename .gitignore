@@ -110,3 +110,6 @@ UpgradeLog*.XML
 JetBox.*.nupkg
 JetBox/*.nupkg
 ReSharper.JetBox.*.nupkg
+/.idea/
+/.vs/
+*.g.*
